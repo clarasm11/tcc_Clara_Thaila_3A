@@ -3,7 +3,7 @@ let ministrosGlobal = [];
 // Carrega todos os ministros da API
 async function carregarMinistros() {
   try {
-    const res = await fetch("http://localhost:3000/api/ministro/listar/todos");
+    const res = await fetch(`${window.location.origin}/api/ministro/listar/todos`);
     let data = await res.json();
 
     // 🔹 Garante que sempre será array
@@ -84,7 +84,7 @@ async function inativarMinistro(cod) {
   if (!confirm("Tem certeza que deseja inativar este ministro?")) return;
 
   try {
-    const res = await fetch(`http://localhost:3000/api/ministro/inativar/${cod}`, { method: "PUT" });
+    const res = await fetch(`${window.location.origin}/api/ministro/inativar/${cod}`, { method: "PUT" });
     const data = await res.json();
     alert(data.message || "Ministro inativado.");
     carregarMinistros(); // 🔹 atualiza lista sem reload

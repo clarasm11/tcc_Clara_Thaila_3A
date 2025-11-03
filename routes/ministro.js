@@ -14,13 +14,7 @@ router.post('/cadastro', async (req, res) => {
       return res.status(400).json({ message: 'Este login já existe para outro ministro.' });
     }
 
-    // 🔹 Checa duplicidade de senha
-    const ministros = await Ministro.findAll({ attributes: ['senha'] });
-    for (const m of ministros) {
-      if (m.senha && await bcrypt.compare(dados.senha, m.senha)) {
-        return res.status(400).json({ message: 'Esta senha já está em uso por outro ministro.' });
-      }
-    }
+    
 
     // Cria o endereço primeiro
     const enderecoCriado = await Endereco.create({
@@ -205,26 +199,8 @@ router.put('/:cod', async (req, res) => {
     const ministro = await Ministro.findByPk(cod);
     if (!ministro) return res.status(404).json({ message: "Ministro não encontrado." });
 
-    // 🔹 Checa login duplicado
-    if (login) {
-      const loginDuplicado = await Ministro.findOne({ where: { login } });
-      if (loginDuplicado && loginDuplicado.cod !== ministro.cod) {
-        return res.status(400).json({ message: 'Este login já existe para outro ministro.' });
-      }
-      dados.login = login;
-    }
-
-    // 🔹 Checa senha duplicada
-    if (senha) {
-      const ministros = await Ministro.findAll({ attributes: ['senha'] });
-      for (const m of ministros) {
-        if (m.senha && await bcrypt.compare(senha, m.senha)) {
-          return res.status(400).json({ message: 'Esta senha já está em uso por outro ministro.' });
-        }
-      }
-      const salt = await bcrypt.genSalt(10);
-      dados.senha = await bcrypt.hash(senha, salt);
-    }
+ 
+ 
 
     if (ministro.fk_endereco) {
       const endereco = await Endereco.findByPk(ministro.fk_endereco);

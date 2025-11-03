@@ -46,7 +46,7 @@ async function enviarDadosMinistro() {
   };
 
   try {
-    const res = await fetch("http://localhost:3000/api/ministro/cadastro", {
+    const res = await fetch(`${window.location.origin}/api/ministro/cadastro`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(dados)

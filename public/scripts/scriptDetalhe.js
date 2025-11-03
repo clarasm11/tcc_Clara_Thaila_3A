@@ -1,20 +1,35 @@
+// Função principal para carregar os detalhes do ministro
 async function carregarDetalhesMinistro() {
   const urlParams = new URLSearchParams(window.location.search);
   const cod = urlParams.get("cod");
 
-  if (!cod) return alert("ID do ministro não informado!");
+  console.log(" Código recebido:", cod);
+
+  if (!cod) {
+    alert("ID do ministro não informado!");
+    return;
+  }
 
   try {
-    const res = await fetch(`http://localhost:3000/api/ministro/detalhes/${cod}`);
+    const res = await fetch(`${window.location.origin}/api/ministro/detalhes/${cod}`);
+    console.log(" Resposta da API:", res);
+
+    if (!res.ok) {
+      const erro = await res.text();
+      console.error(" Erro retornado pela API:", erro);
+      throw new Error("Falha ao carregar os detalhes do ministro.");
+    }
+
     const ministro = await res.json();
+    console.log(" Dados do ministro recebidos:", ministro);
 
-    if (!res.ok) throw new Error(ministro.error || "Erro ao carregar ministro");
-
-    // Preenche os campos
-    document.getElementById("nomeMinistro").value = ministro.nome;
-    document.getElementById("dataNascMinistro").value = ministro.dataNasc;
-    document.getElementById("rgMinistro").value = ministro.rg;
-    document.getElementById("cpfMinistro").value = ministro.cpf;
+    // PREENCHIMENTO DOS CAMPOS
+  
+    // Dados básicos
+    document.getElementById("nomeMinistro").value = ministro.nome || "";
+    document.getElementById("dataNascMinistro").value = ministro.dataNasc || "";
+    document.getElementById("rgMinistro").value = ministro.rg || "";
+    document.getElementById("cpfMinistro").value = ministro.cpf || "";
     document.getElementById("foneMinistro").value = ministro.fone || "";
     document.getElementById("emailMinistro").value = ministro.email || "";
 
@@ -36,23 +51,21 @@ async function carregarDetalhesMinistro() {
     document.getElementById("profissaoMinistro").value = ministro.profissao || "";
     document.getElementById("projetoMinistro").value = ministro.projetoIgreja || "";
     document.getElementById("obsMinistro").value = ministro.obs || "";
-    document.getElementById("dataEntMinistro").value = ministro.dataIng;
+    document.getElementById("dataEntMinistro").value = ministro.dataIng || "";
 
     // Gênero
     if (ministro.fK_genero == 1) document.getElementById("masculino").checked = true;
     if (ministro.fK_genero == 2) document.getElementById("feminino").checked = true;
-    if (ministro.Genero && document.getElementById("descricaoGeneroMinistro")) {
-      document.getElementById("descricaoGeneroMinistro").value = ministro.Genero.descricao;
-    }
 
     // Pastor
     if (ministro.pastor) document.getElementById("simPastor").checked = true;
     else document.getElementById("nPastor").checked = true;
 
   } catch (err) {
-    console.error(err);
-    alert("Erro ao carregar detalhes do ministro.");
+    console.error(" Erro no carregamento:", err);
+    alert("Ocorreu um erro ao carregar os detalhes do ministro. Verifique o console para mais informações.");
   }
 }
 
-window.onload = carregarDetalhesMinistro;
+
+document.addEventListener("DOMContentLoaded", carregarDetalhesMinistro);

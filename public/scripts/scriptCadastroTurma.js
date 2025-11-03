@@ -25,7 +25,7 @@ document.querySelector('form').addEventListener('submit', async (e) => {
   };
 
   try {
-    const res = await fetch('http://localhost:3000/api/turma', {
+    const res = await fetch(`${window.location.origin}/api/turma`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
