@@ -7,12 +7,13 @@ async function enviarDadosMinistro() {
   // Gênero: converte para número (1 = masculino, 2 = feminino)
   const genero = parseInt(
     document.querySelector('input[name="genero"]:checked')?.value || "1",
-    10
   );
 
-  // Pastor: converte para boolean
-  const pastorValue = document.querySelector('input[name="pastor"]:checked')?.value;
-  const pastor = pastorValue === "simPastor";
+  // Pastor: converte para número (1 = Sim, 0 = Não)
+  // Os inputs no HTML têm name="pastor" e ids "simPastor" / "nPastor".
+  const pastorCheckedId = document.querySelector('input[name="pastor"]:checked')?.id;
+  const pastor = pastorCheckedId === 'simPastor' ? 1 : 0;
+
 
   const dados = {
     nome: document.getElementById("nomeMinistro").value,
@@ -41,8 +42,7 @@ async function enviarDadosMinistro() {
 
     login: document.getElementById("userMinistro").value,
     senha: document.getElementById("senha").value,
-
-    pastor
+    pastor,
   };
 
   try {

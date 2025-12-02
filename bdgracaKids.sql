@@ -99,13 +99,13 @@ CREATE TABLE DiaTurma (
 );
 
 INSERT INTO DiaTurma (cod, dia) VALUES
-(8, 'segunda'),
-(9, 'terca'),
-(3, 'quarta'),
-(4, 'quinta'),
-(5, 'sexta'),
-(6, 'sabado'),
-(7, 'domingo');
+(8, 'Segunda'),
+(9, 'Terça'),
+(3, 'Quarta'),
+(4, 'Quinta'),
+(5, 'Sexta'),
+(6, 'Sábado'),
+(7, 'Domingo');
 
 CREATE TABLE Turma (
   cod INTEGER NOT NULL UNIQUE auto_increment,

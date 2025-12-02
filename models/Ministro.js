@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
     ativo: { type: DataTypes.BOOLEAN, defaultValue: true },
     validado: { type: DataTypes.BOOLEAN, defaultValue: false },
 
-    // 🔹 Ajuste: agora bate com suas rotas (Endereco, Genero)
+    // Ajuste: agora bate com suas rotas (Endereco, Genero)
     fK_endereco: {
       type: DataTypes.INTEGER,
       allowNull: false,

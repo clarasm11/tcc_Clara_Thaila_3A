@@ -27,13 +27,13 @@
             <li class="nav-item me-5 ms-lg-2">
               <div class="d-flex align-items-center">
                 <i class="iconMenu bi bi-house-fill d-lg-none"></i>
-                <a class="nav-link ms-3" href="/indexCrianca.handlebars">Início</a>
+                <a class="nav-link ms-3" href="/index.handlebars">Início</a>
             </div>
             </li>
             <li class="nav-item me-5">
               <div class="d-flex align-items-center">
                 <i class="iconMenu bi bi-people-fill d-lg-none"></i>
-                <a class="nav-link active ms-3" aria-current="page" href="/turmasCrianca.handlebars">Turmas</a>
+                <a class="nav-link active ms-3" aria-current="page" href="/turmas.handlebars">Turmas</a>
               </div>
             </li>
             <li class="nav-item">
@@ -50,7 +50,7 @@
   
   <!-- Menu flutuante -->
   <div id="menuPerfil">
-    <p id="nomePerfil" class="text-center mt-3">{{aluno.nome}}</p>
+    <p id="nomePerfil" class="text-center mt-3">{{ministro.nome}}</p>
     
     <a class="navbar-brand text-center" href="#">
       <i class="bi bi-person-circle"></i>  
@@ -58,7 +58,7 @@
 
     <!-- Botões do menu de perfil -->
     <div class="text-center mb-3">
-      <a href="/editarAlunoPerfil" class="d-block mb-2">Editar perfil</a>
+      <a href="/editarMinistroPerfil" class="d-block mb-2">Editar perfil</a>
       <a href="/logout-simples" class="d-block">Sair da conta</a>
     </div>
 
@@ -71,62 +71,15 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            
           </div>
         </div>
       </div>
     </div>
-
-    <script>
-      function abrirModalEditarAluno(cod) {
-        fetch(`/api/aluno/${cod}`)
-          .then(res => res.json())
-          .then(aluno => {
-            document.getElementById('modalNomeAluno').value = aluno.nome || '';
-            document.getElementById('modalEmailAluno').value = aluno.email || '';
-            // Preencher outros campos se necessário
-            document.getElementById('formModalEditarAluno').dataset.cod = cod;
-            var modal = new bootstrap.Modal(document.getElementById('modalEditarAluno'));
-            modal.show();
-          });
-      }
-
-      document.getElementById('formModalEditarAluno').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const cod = e.target.dataset.cod;
-        const dados = {
-          nome: document.getElementById('modalNomeAluno').value,
-          email: document.getElementById('modalEmailAluno').value
-          // Adicione outros campos aqui
-        };
-        fetch(`/perfil/editar/${cod}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(dados)
-        })
-        .then(res => res.ok ? res.json() : Promise.reject(res))
-        .then(() => {
-          alert('Perfil atualizado com sucesso!');
-          location.reload();
-        })
-        .catch(() => alert('Erro ao atualizar perfil.'));
-      });
-    </script>
-
-    <script>
-      window.usuarioCod = {{aluno.cod}};
-      window.usuarioTipo = 'aluno';
-    </script>
-    <script src="/scripts/inativarCadastro.js"></script>
   </div>
   <article id="turmasArticle" class="container mt-4">
       <div class="row d-flex justify-content-center mt-md-5">
         <div class="col-12 d-flex justify-content-center flex-wrap">
-          
-          </button></a>
-          
-          </button></a>
-          <ul id="lista-turmas" class="list-unstyled d-flex flex-wrap justify-content-center"></ul>
+          <p class="justify-content-center text-align-center h3">Em desenvolvimento =)</p>
         </div>
       </div>
   </article>

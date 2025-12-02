@@ -18,11 +18,11 @@
                         <form>
                             <div class="d-flex flex-wrap">
                                 <div class="nome mb-2 mx-auto flex-wrap">
-                                    <label for="nomeAluno" class="form-label">Nome:</label>
+                                    <label for="nomeAluno" class="form-label">* Nome:</label>
                                     <input type="text" class="form-control" id="nomeAluno" placeholder="Digite seu nome completo." name="nome" autocomplete="name">
                                 </div>
-                                <div class="campinho mx-auto my-2">
-                                    <label class="form-label">Sexo:</label><br>
+                                    <div class="campinho mx-auto my-2">
+                                        <label class="form-label">* Sexo:</label><br>
                                     <div class="formulario px-auto py-1 d-flex justify-content-center flex-wrap">
                                         <div class="align-items-center">
                                             <input type="radio" id="feminino" name="genero" value="feminino">
@@ -35,15 +35,15 @@
                                     </div>
                                 </div>
                                 <div class="campinho mx-auto my-2">
-                                    <label class="mb-2" for="dataNascAluno">Data de Nascimento:</label><br>
+                                    <label class="mb-2" for="dataNascAluno">* Data de Nascimento:</label><br>
                                     <input class="formulario px-2 py-1" type="date" id="dataNascAluno" name="dataNasc" min="1900-01-01" max="2050-12-31">
                                 </div>
                                 <div class="campinho mx-auto my-2">
-                                    <label for="rgAluno" class="form-label">RG:</label>
+                                    <label for="rgAluno" class="form-label">* RG:</label>
                                     <input type="text" class="form-control" id="rgAluno" placeholder="Digite só números." name="rg" OnKeyPress="formatar('###.###.###-##',this)" maxlength="14">
                                 </div>
                                 <div class="campinho mx-auto my-2">
-                                    <label for="cpfAluno" class="form-label">CPF:</label>
+                                    <label for="cpfAluno" class="form-label">* CPF:</label>
                                     <input type="text" class="form-control" id="cpfAluno" placeholder="Digite só números." name="cpf" OnKeyPress="formatar('###.###.###-##',this)" maxlength="14">
                                 </div>
                                 <div class="campinho mx-auto mt-2 mb-5">
@@ -64,33 +64,33 @@
                     <div class="col-sm-8 mx-auto">
                             <div class="d-flex flex-wrap">
                                 <div class="campinho mx-auto mb-2">
-                                    <label for="ruaAluno" class="form-label">Rua:</label>
+                                    <label for="ruaAluno" class="form-label">* Rua:</label>
                                     <input class="formulario px-2 py-1" type="text" id="ruaAluno" name="rua" placeholder="Ex.: Rua dos Bobos" autocomplete="street-address">
                                 </div>
                                 <div class="campinho mx-auto mb-2">
-                                    <label for="nResidenciaAluno" class="form-label">Número da residência:</label>
+                                    <label for="nResidenciaAluno" class="form-label">* Número da residência:</label>
                                     <input class="formulario px-2 py-1" type="text" id="nResidenciaAluno" name="nResidencia" placeholder="Ex.: 123" autocomplete="street-address">
                                 </div>
                                 <div class="campinho mx-auto my-2">
-                                    <label for="bairroAluno" class="form-label">Bairro:</label>
+                                    <label for="bairroAluno" class="form-label">* Bairro:</label>
                                     <input class="formulario px-2 py-1" type="text" id="bairroAluno" name="bairro" placeholder="Ex.: Bairro Januária" autocomplete="address-line2">
                                 </div>
                                 <div class="campinho mx-auto my-2">
-                                    <label class="form-label" for="cidadeAluno">Cidade:</label>
+                                    <label class="form-label" for="cidadeAluno">* Cidade:</label>
                                     <input class="formulario px-2 py-1" type="text" id="cidadeAluno" name="cidade"  placeholder="Ex.: Sombrio" autocomplete="address-level2">
                                 </div>
                                 <div class="d-flex flex-column w-50">
                                     <div class="mx-1 mx-md-2 my-2">
-                                        <label for="ufAluno" class="form-label">UF:</label>
+                                        <label for="ufAluno" class="form-label">* UF:</label>
                                         <input type="text" class="form-control" id="ufAluno" name="uf" placeholder="Ex.: SC" autocomplete="address-level1">
                                     </div>
                                     <div class="mx-1 mx-md-2 mt-2 mb-5">
-                                        <label for="cepAluno" class="form-label">CEP:</label>
+                                        <label for="cepAluno" class="form-label">* CEP:</label>
                                         <input type="text" class="form-control" id="cepAluno" name="cep" placeholder="Digite só números." autocomplete="postal-code" OnKeyPress="formatar('#####-###',this)" maxlength="9">
                                     </div>
                                 </div>
                                 <div class="campinho mx-auto mt-2 mb-5">
-                                    <label class="form-label" for="obsEnderecoAluno">Observações:</label>
+                                    <label class="form-label" for="obsEnderecoAluno">* Observações:</label>
                                     <textarea class="formulario campinhoAlto px-2 py-1" type="text" id="obsEnderecoAluno" name="obs" placeholder="Ex.: se mora em apartamento, condomínio."></textarea>
                                 </div>
                             </div>
@@ -167,33 +167,33 @@
                     <div class="col-sm-8 mx-auto d-flex">
                             <div class="bordaResponsavel d-flex flex-wrap flex-column w-50">
                                 <div class="campinhoResponsavel mx-auto mb-2 mt-1">
-                                    <label for="nomeResponsavel1" class="form-label">Nome do responsável 1:</label>
+                                    <label for="nomeResponsavel1" class="form-label">* Nome do responsável 1:</label>
                                     <input class="formulario px-2 py-1" type="text" id="nomeResponsavel1" name="resp1" placeholder="Digite o nome completo." autocomplete="name">
                                 </div>
                                 <div class="campinhoResponsavel mx-auto my-2">
-                                    <label for="parentescoResponsavel1" class="form-label">Parentesco do responsável 1:</label>
+                                    <label for="parentescoResponsavel1" class="form-label">* Parentesco do responsável 1:</label>
                                     <input class="formulario px-2 py-1" type="text" id="parentescoResponsavel1" name="parentescoResp1" placeholder="Digite o nome completo.">
                                 </div>
                                 <div class="campinhoResponsavel mx-auto my-2">
-                                    <label for="foneResponsavel1" class="form-label">Telefone do responsável 1:</label>
+                                    <label for="foneResponsavel1" class="form-label">* Telefone do responsável 1:</label>
                                     <input class="formulario px-2 py-1" type="tel" id="foneResponsavel1" name="foneResp1"  OnKeyPress="formatar('(##) #####-####',this)" maxlength="15"  placeholder="(xx) xxxxx-xxxx" autocomplete="tel">
                                 </div>
                                 <div class="campinhoResponsavel mx-auto my-2">
-                                    <label for="cpfResponsavel1" class="form-label">CPF do responsável 1:</label>
+                                    <label for="cpfResponsavel1" class="form-label">*  CPF do responsável 1:</label>
                                     <input class="formulario px-2 py-1" type="text" id="cpfResponsavel1" name="cpfResp1" placeholder="Digite só números" OnKeyPress="formatar('###.###.###-##',this)" maxlength="14">
                                 </div>
                             </div>
                             <div class="d-flex flex-wrap flex-column w-50"> 
                                 <div class="campinhoResponsavel mx-auto mb-2 mt-1"> 
-                                    <label for="nomeResponsavel2" class="form-label">Nome do responsável 2:</label>
+                                    <label for="nomeResponsavel2" class="form-label">* Nome do responsável 2:</label>
                                     <input class="formulario px-2 py-1" type="text" id="nomeResponsavel2" name="resp2" placeholder="Digite o nome completo." autocomplete="name">
                                 </div>
                                 <div class="campinhoResponsavel mx-auto my-2">
-                                    <label for="parentescoResponsavel2" class="form-label">Parentesco do responsável 2:</label>
+                                    <label for="parentescoResponsavel2" class="form-label">* Parentesco do responsável 2:</label>
                                     <input class="formulario px-2 py-1" type="text" id="parentescoResponsavel2" name="parentescoResp2" placeholder="Digite o nome completo.">
                                 </div>
                                 <div class="campinhoResponsavel mx-auto my-2">
-                                    <label for="foneResponsavel2" class="form-label">Telefone do responsável 2:</label>
+                                    <label for="foneResponsavel2" class="form-label">* Telefone do responsável 2:</label>
                                     <input class="formulario px-2 py-1" type="tel" id="foneResponsavel2" name="foneResp2"  OnKeyPress="formatar('(##) #####-####',this)" maxlength="15"  placeholder="(xx) xxxxx-xxxx" autocomplete="tel">
                                 </div>
                                 <div class="campinhoResponsavel mx-auto my-2">
@@ -203,7 +203,7 @@
                             </div>
                     </div>
                     <div class="col-sm-8 mx-auto d-flex flex-column align-items-center px-4">
-                        <h6 class="mt-4 mb-3" style="text-align: center;">TERMO DE AUTORIZAÇÃO PARA USO DE IMAGEM DE MENORES</h6>
+                        <h6 class="mt-4 mb-3" style="text-align: center;">* TERMO DE AUTORIZAÇÃO PARA USO DE IMAGEM DE MENORES</h6>
 
                         <p style="text-align: justify;">Pelo presente instrumento, os pais ou responsáveis legais do(a) menor declaram, para os devidos fins, que AUTORIZAM, de forma gratuita, definitiva e irrevogável, o uso da imagem do(a) menor, captada por meio de fotografias, vídeos ou quaisquer outros meios audiovisuais, durante atividades, eventos, projetos ou ações promovidas pela instituição.<br><br>
                         
@@ -234,24 +234,28 @@
                         </div>
                             <div class="d-flex flex-wrap flex-column">
                                 <div class="campinhoLogin mx-auto mb-2">
-                                    <label for="userAluno" class="form-label">Nome:</label>
+                                    <label for="userAluno" class="form-label">* Nome:</label>
                                     <input class="formulario px-2 py-1" type="text" id="userAluno" name="login" placeholder="Digite seu nome de usuário.">
                                 </div>
                                 <div class="campinhoLogin mx-auto my-2 position-relative">
-                                    <label for="senha" class="form-label">Senha:</label>
+                                    <label for="senha" class="form-label">* Senha:</label>
                                     <input class="formulario px-2 py-1" type="password" id="senha" name="senha" placeholder="Digite sua senha.">
                                     <i class="bi bi-eye position-absolute iconOlho" data-input="senha"></i>
                                 </div>
                                 <div class="campinhoLogin mx-auto my-2 position-relative">
-                                    <label for="senha2" class="form-label">Confirmar senha:</label>
+                                    <label for="senha2" class="form-label">* Confirmar senha:</label>
                                     <input class="formulario px-2 py-1" type="password" id="senha2" name="senha2" placeholder="Reescreva sua senha.">
                                     <i class="bi bi-eye position-absolute iconOlho" data-input="senha2"></i>
                                 </div>
                             </div>
+                              <div class="obsAluno mx-1 mx-md-2 mt-3 mb-5 w-100 p-2">
+                                    <p class="pObs justify-content-center"><strong>OBS.:</strong> Todos os campos com * são de preenchimento obrigatório.
+                                    </p>
+                                </div>   
                             <div class="d-flex my-4">
                                 <div class="divButton campinho mx-2 mb-2 d-flex justify-content-center">
                                         <a href="/login.handlebars">
-                                            <input class="buttonVoltar" id="btnProximo" type="button" value="próximo" disabled>
+                                            <input class="buttonVoltar" id="btnProximo" type="button" value="Próximo" disabled>
                                         </a>
                                 </div>
                                 <div class="divButton campinho mx-2 mb-2 d-flex justify-content-center">

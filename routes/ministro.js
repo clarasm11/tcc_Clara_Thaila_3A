@@ -29,7 +29,25 @@ router.post('/cadastro', async (req, res) => {
 
     // Ajusta dados
     const generoCod = dados.genero || 1;
-    dados.pastor = dados.pastor === 'simPastor';
+
+    // Normaliza campo `pastor` para boolean (aceita 1/0 do front ou 'simPastor'/'nPastor')
+    if (typeof dados.pastor === 'number') {
+      dados.pastor = dados.pastor === 1;
+    } else if (typeof dados.pastor === 'string') {
+      if (dados.pastor === '1' || dados.pastor.toLowerCase() === 'true' || dados.pastor === 'simPastor') {
+        dados.pastor = true;
+      } else {
+        dados.pastor = false;
+      }
+    } else {
+      dados.pastor = !!dados.pastor;
+    }
+
+    // Normaliza email vazio para null, evitando falha na validação `isEmail` do Sequelize
+    if (!dados.email || String(dados.email).trim() === '') {
+      dados.email = null;
+    }
+
     dados.validado = false;
     dados.ativo = true;
     dados.fK_genero = parseInt(dados.genero);

@@ -24,6 +24,7 @@ const perfilRoutes = require('./routes/perfil');
 const inativarRoutes = require('./routes/inativar');
 const redefinirRoutes = require('./routes/redefinir');
 
+
 // ==========================
 // CONFIGURAÇÕES
 // ==========================
@@ -143,7 +144,9 @@ app.use('/api/aluno', alunoRoutes);
 // ==========================
 function protegeMinistroPastor(req, res, next) {
   const u = req.session.usuario;
-  if (!u || u.tipo !== 'ministro' || !u.ativo || !(u.pastor === 0 || u.pastor === true)) {
+  // Verifica se é ministro pastor: pastor pode ser true, 1, "1" ou "true"
+  const isPastor = u && u.pastor && (u.pastor === true || u.pastor === 1 || u.pastor === '1' || u.pastor === 'true');
+  if (!u || u.tipo !== 'ministro' || !u.ativo || !isPastor) {
     req.session.destroy(() => {
       res.redirect('/login.handlebars');
     });
@@ -154,7 +157,7 @@ function protegeMinistroPastor(req, res, next) {
 const rotasProtegidas = [
   '/index.handlebars', '/turmas.handlebars', '/criarTurma.handlebars', '/listaMinistro.handlebars',
   '/editarMinistro.handlebars', '/detalhesMinistro.handlebars', '/listaCrianca.handlebars',
-  '/detalhesAluno.handlebars', '/editarAluno.handlebars', '/preCadastro.handlebars'
+  '/detalhesAluno.handlebars', '/editarAluno.handlebars', '/preCadastro.handlebars', '/eventos.handlebars'
 ];
 rotasProtegidas.forEach(r => {
   app.get(r, protegeMinistroPastor, (req, res) => {
@@ -192,6 +195,34 @@ rotasMinistro.forEach(r => {
     const nomeView = r.replace('.handlebars','').replace(/^\//,'');
     res.render(nomeView, { ministro: req.session.usuario });
   });
+});
+
+// Protege rota para aluno logado
+function protegeAluno(req, res, next) {
+  const u = req.session.usuario;
+  if (!u || u.tipo !== 'aluno' || !u.ativo) {
+    req.session.destroy(() => {
+      res.redirect('/login.handlebars');
+    });
+    return;
+  }
+  next();
+}
+
+// Rotas de eventos — privadas
+app.get('/eventos.handlebars', protegeMinistroPastor, (req, res) => {
+  console.log('[ROTA] /eventos.handlebars acessada. Sessão:', req.session.usuario);
+  res.render('eventos', { ministro: req.session.usuario });
+});
+
+app.get('/eventosMinistro.handlebars', protegeMinistroAtivo, (req, res) => {
+  console.log('[ROTA] /eventosMinistro.handlebars acessada. Sessão:', req.session.usuario);
+  res.render('eventosMinistro', { ministro: req.session.usuario });
+});
+
+app.get('/eventosCrianca.handlebars', protegeAluno, (req, res) => {
+  console.log('[ROTA] /eventosCrianca.handlebars acessada. Sessão:', req.session.usuario);
+  res.render('eventosCrianca', { aluno: req.session.usuario });
 });
 
 // ==========================
