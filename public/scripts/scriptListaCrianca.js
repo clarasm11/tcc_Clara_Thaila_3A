@@ -44,7 +44,7 @@ async function fetchAlunos(codTurma) {
   } catch (error) {
     console.error("Erro no fetchAlunos:", error);
     alert("Erro ao carregar alunos.");
-  }
+  } 
 }
 
 function renderizarLista(alunos, codTurma) {
@@ -63,26 +63,26 @@ function renderizarLista(alunos, codTurma) {
 
   alunos.forEach(aluno => {
     const li = document.createElement("li");
-    li.className = "list-group-item d-flex justify-content-between align-items-center";
+    li.className = "list-group-item d-flex justify-content-between align-items-center botoes-crianca";
 
     const nomeStyle = aluno.status === "pre" ? "style='color:red; font-weight:bold;'" : "";
 
     // Botões de ação
     let botoes = `
-      <button class="btn btn-sm btn-info" onclick="verAluno('${aluno.cod}', '${codTurma}')">
+      <button class="btn btn-sm btn-outline-info" onclick="verAluno('${aluno.cod}', '${codTurma}')">
         <i class="bi bi-eye"></i> Ver
       </button>
-      <button class="btn btn-sm btn-warning" onclick="editarAluno('${aluno.cod}', '${codTurma}')">
+      <button class="btn btn-sm btn-outline-warning" onclick="editarAluno('${aluno.cod}', '${codTurma}')">
         <i class="bi bi-pencil-square"></i> Editar
       </button>
     `;
 
     // Botão ativar/inativar dependendo do campo ativo
     botoes += aluno.ativo === 0
-      ? `<button class="btn btn-sm btn-success" onclick="ativarAluno('${aluno.cod}', '${codTurma}')">
+      ? `<button class="btn btn-sm btn-outline-success" onclick="ativarAluno('${aluno.cod}', '${codTurma}')">
            <i class="bi bi-check-circle"></i> Ativar
          </button>`
-      : `<button class="btn btn-sm btn-danger" onclick="inativarAluno('${aluno.cod}', '${codTurma}')">
+      : `<button class="btn btn-sm btn-outline-danger" onclick="inativarAluno('${aluno.cod}', '${codTurma}')">
            <i class="bi bi-x-circle"></i> Inativar
          </button>`;
 

@@ -44,7 +44,7 @@ function aplicarFiltros() {
   // Exibe os ministros filtrados
   filtrados.forEach(ministro => {
     const div = document.createElement("div");
-    div.className = "d-flex justify-content-between align-items-center p-2 border-bottom bg-light rounded";
+    div.className = "d-flex justify-content-between align-items-center p-2 border-bottom bg-light rounded botoes-crianca";
 
     const corNome = ministro.validado ? "black" : "red";
 
@@ -54,7 +54,7 @@ function aplicarFiltros() {
         <span style="color: ${corNome}; font-weight: bold;">
           ${ministro.nome ?? "(sem nome)"}
         </span>
-      </div>
+      </div> 
       <div>
         <a href="detalhesMinistro.handlebars?cod=${ministro.cod}" class="btn btn-outline-primary btn-sm me-2">Ver</a>
         <a href="editarMinistro.handlebars?cod=${ministro.cod}" class="btn btn-outline-warning btn-sm me-2">Editar</a>

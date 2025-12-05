@@ -17,6 +17,10 @@
                     <div class="col-sm-8 mx-auto">
                         <form>
                             <div class="d-flex flex-wrap">
+                                <div class="obsAluno mx-1 mx-md-2 mt-3 mb-3 w-100 p-2 text-center">
+                                    <p class="pObs"><strong>OBS.:</strong> Todos os campos desse formulário com * são de preenchimento obrigatório.
+                                    </p>
+                                </div>   
                                 <div class="nome mb-2 mx-auto flex-wrap">
                                     <label for="nomeAluno" class="form-label">* Nome:</label>
                                     <input type="text" class="form-control" id="nomeAluno" placeholder="Digite seu nome completo." name="nome" autocomplete="name">
@@ -38,6 +42,10 @@
                                     <label class="mb-2" for="dataNascAluno">* Data de Nascimento:</label><br>
                                     <input class="formulario px-2 py-1" type="date" id="dataNascAluno" name="dataNasc" min="1900-01-01" max="2050-12-31">
                                 </div>
+                                <div class="obsAluno mx-1 mx-md-2 mt-3 mb-2 w-100 p-2 text-center">
+                                    <p class="pObs"><strong>REGRA:</strong> O número do RG deve ser igual ao CPF.
+                                    </p>
+                                </div>   
                                 <div class="campinho mx-auto my-2">
                                     <label for="rgAluno" class="form-label">* RG:</label>
                                     <input type="text" class="form-control" id="rgAluno" placeholder="Digite só números." name="rg" OnKeyPress="formatar('###.###.###-##',this)" maxlength="14">
@@ -91,7 +99,7 @@
                                 </div>
                                 <div class="campinho mx-auto mt-2 mb-5">
                                     <label class="form-label" for="obsEnderecoAluno">* Observações:</label>
-                                    <textarea class="formulario campinhoAlto px-2 py-1" type="text" id="obsEnderecoAluno" name="obs" placeholder="Ex.: se mora em apartamento, condomínio."></textarea>
+                                    <textarea class="formulario campinhoAlto px-2 py-1" type="text" id="obsEnderecoAluno" name="obs" placeholder="Ex.: se mora em apartamento, casa, condomínio."></textarea>
                                 </div>
                             </div>
                     </div>
@@ -248,10 +256,6 @@
                                     <i class="bi bi-eye position-absolute iconOlho" data-input="senha2"></i>
                                 </div>
                             </div>
-                              <div class="obsAluno mx-1 mx-md-2 mt-3 mb-5 w-100 p-2">
-                                    <p class="pObs justify-content-center"><strong>OBS.:</strong> Todos os campos com * são de preenchimento obrigatório.
-                                    </p>
-                                </div>   
                             <div class="d-flex my-4">
                                 <div class="divButton campinho mx-2 mb-2 d-flex justify-content-center">
                                         <a href="/login.handlebars">

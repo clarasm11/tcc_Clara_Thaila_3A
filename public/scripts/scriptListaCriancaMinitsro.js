@@ -63,14 +63,14 @@ function renderizarLista(alunos, codTurma) {
 
   alunos.forEach(aluno => {
     const li = document.createElement("li");
-    li.className = "list-group-item d-flex justify-content-between align-items-center";
+    li.className = "list-group-item d-flex justify-content-between align-items-center botoes-crianca";
 
     const nomeStyle = aluno.status === "pre" ? "style='color:red; font-weight:bold;'" : "";
 
     // Botões de ação
     let botoes = `
-      <button class="btn btn-sm btn-info" onclick="verAluno('${aluno.cod}', '${codTurma}')">
-        <i class="bi bi-eye"></i> Ver
+      <button class="btn btn-sm btn-outline-info" onclick="verAluno('${aluno.cod}', '${codTurma}')">
+        <i class="bi bi-eye"></i> Ver 
       </button>
      
     `;
