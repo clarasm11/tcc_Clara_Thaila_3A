@@ -190,6 +190,13 @@ router.put('/perfil', async (req, res) => {
       payload.senha = await bcrypt.hash(senha, salt);
     }
 
+    // 🔹 Normaliza email vazio para null, evitando falha na validação `isEmail`
+    if (payload.email !== undefined) {
+      if (!payload.email || String(payload.email).trim() === '') {
+        payload.email = null;
+      }
+    }
+
     if (ministro.Endereco && enderecoPayload) {
       await ministro.Endereco.update(enderecoPayload);
     }
